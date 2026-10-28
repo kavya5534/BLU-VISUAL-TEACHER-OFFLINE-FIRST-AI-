@@ -1,0 +1,584 @@
+{
+  "en": {
+    "title": "How a Python loop works",
+    "level": "beginner",
+    "language": "en",
+    "category": "Programming",
+    "scenes": [
+      {
+        "type": "title_card",
+        "heading": "A loop repeats work",
+        "narration": "A loop repeats an instruction for each value in a sequence without manual repetition."
+      },
+      {
+        "type": "code_walkthrough",
+        "heading": "Read the code",
+        "code": "for i in range(3):\n    print(f\"Step: {i}\")",
+        "highlight_lines": [1],
+        "narration": "Range of three gives three values: zero, one and two. The loop runs once for each value."
+      },
+      {
+        "type": "diagram",
+        "heading": "Watch each iteration",
+        "items": ["i = 0", "i = 1", "i = 2"],
+        "narration": "Each pass takes the next value, then executes the body. The resulting output is zero, one, and two."
+      }
+    ],
+    "quizzes": [
+      {
+        "id": 1,
+        "question": "What values does range(3) generate in Python?",
+        "options": ["1, 2, 3", "0, 1, 2", "0, 1, 2, 3", "1, 2"],
+        "answer": 1,
+        "explanation": "In Python, range(3) starts at 0 and produces 3 numbers up to, but not including, 3 (i.e. 0, 1, 2)."
+      },
+      {
+        "id": 2,
+        "question": "What is the main benefit of using a loop?",
+        "options": ["To make code run slower", "To avoid duplicating code for repetitive tasks", "To change computer hardware", "To convert Python into HTML"],
+        "answer": 1,
+        "explanation": "Loops allow you to repeat operations cleanly without writing copy-pasted lines of code."
+      },
+      {
+        "id": 3,
+        "question": "Which keyword is used to write a counted loop in Python?",
+        "options": ["repeat", "loop", "for", "iterate"],
+        "answer": 2,
+        "explanation": "Python uses the 'for' keyword alongside iterables such as lists or ranges."
+      }
+    ],
+    "flashcards": [
+      {
+        "front": "What is an Iteration?",
+        "back": "A single execution of the loop body for one element in a sequence.",
+        "tip": "Think of it as one turn of a wheel."
+      },
+      {
+        "front": "range(start, stop, step)",
+        "back": "Generates numbers starting at 'start', stopping before 'stop', advancing by 'step'.",
+        "tip": "Default start is 0, default step is 1."
+      },
+      {
+        "front": "What does the 'break' statement do?",
+        "back": "Immediately terminates the enclosing loop, jumping to the first statement outside it.",
+        "tip": "Emergency exit from a loop."
+      }
+    ]
+  },
+  "hi": {
+    "title": "Python loop कैसे काम करता है",
+    "level": "beginner",
+    "language": "hi",
+    "category": "Programming",
+    "scenes": [
+      {
+        "type": "title_card",
+        "heading": "Loop बार-बार काम करता है",
+        "narration": "Loop किसी instruction को sequence की हर value के लिए दोहराता है बिना दोबारा लिखे।"
+      },
+      {
+        "type": "code_walkthrough",
+        "heading": "Code को पढ़ें",
+        "code": "for i in range(3):\n    print(f\"कदम: {i}\")",
+        "highlight_lines": [1],
+        "narration": "range तीन values देता है: zero, one और two। Loop हर value के लिए एक बार चलता है।"
+      },
+      {
+        "type": "diagram",
+        "heading": "हर iteration देखें",
+        "items": ["i = 0", "i = 1", "i = 2"],
+        "narration": "हर बार अगली value मिलती है और body चलती है। Output zero, one और two है।"
+      }
+    ],
+    "quizzes": [
+      {
+        "id": 1,
+        "question": "Python में range(3) कौन से मान उत्पन्न करता है?",
+        "options": ["1, 2, 3", "0, 1, 2", "0, 1, 2, 3", "1, 2"],
+        "answer": 1,
+        "explanation": "Python में range 0 से शुरू होकर n-1 तक चलता है, इसलिए 0, 1, 2 मिलता है।"
+      },
+      {
+        "id": 2,
+        "question": "Loop का मुख्य लाभ क्या है?",
+        "options": ["कोड को बार-बार लिखने से बचना", "कंप्यूटर को धीमा करना", "इंटरनेट स्पीड बढ़ाना", "फाइल्स डिलीट करना"],
+        "answer": 0,
+        "explanation": "Loop पुनरावर्ती कार्यों को सरल और कुशल बनाता है।"
+      }
+    ],
+    "flashcards": [
+      {
+        "front": "Iteration क्या है?",
+        "back": "Loop के अंदर कोड का एक बार पूरा चलना एक Iteration कहलाता है।",
+        "tip": "एक पूरा चक्कर।"
+      },
+      {
+        "front": "Python में 'for' का उपयोग",
+        "back": "किसी सूची या रेंज के तत्वों पर एक-एक करके कार्य करने के लिए 'for' लूप का प्रयोग होता है।",
+        "tip": "क्रमबद्ध दोहराव।"
+      }
+    ]
+  },
+  "ta": {
+    "title": "Python loop எப்படி வேலை செய்கிறது",
+    "level": "beginner",
+    "language": "ta",
+    "category": "Programming",
+    "scenes": [
+      {
+        "type": "title_card",
+        "heading": "Loop ஒரு செயலை மீண்டும் செய்கிறது",
+        "narration": "ஒரு sequence-இல் உள்ள ஒவ்வொரு value-க்கும் loop ஒரு instruction-ஐ மீண்டும் செய்கிறது."
+      },
+      {
+        "type": "code_walkthrough",
+        "heading": "Code-ஐப் பாருங்கள்",
+        "code": "for i in range(3):\n    print(f\"Step: {i}\")",
+        "highlight_lines": [1],
+        "narration": "range மூன்று values-ஐத் தருகிறது: zero, one, two. ஒவ்வொரு value-க்கும் loop ஒருமுறை இயங்கும்."
+      },
+      {
+        "type": "diagram",
+        "heading": "ஒவ்வொரு iteration-ஐப் பாருங்கள்",
+        "items": ["i = 0", "i = 1", "i = 2"],
+        "narration": "ஒவ்வொரு முறையும் அடுத்த value கிடைக்கும்; print இயங்கும். Output zero, one, two."
+      }
+    ],
+    "quizzes": [
+      {
+        "id": 1,
+        "question": "range(3) என்ன எண்களை உருவாக்கும்?",
+        "options": ["1, 2, 3", "0, 1, 2", "0, 1, 2, 3", "3, 2, 1"],
+        "answer": 1,
+        "explanation": "Python-இல் range(3) 0-வில் தொடங்கி 0, 1, 2 என்ற எண்களை தரும்."
+      }
+    ],
+    "flashcards": [
+      {
+        "front": "Iteration என்றால் என்ன?",
+        "back": "Loop-இன் ஒரு சுற்று இயக்கம் Iteration எனப்படும்.",
+        "tip": "சுழற்சி"
+      }
+    ]
+  },
+  "te": {
+    "title": "పైథాన్ లూప్ ఎలా పనిచేస్తుంది",
+    "level": "beginner",
+    "language": "te",
+    "category": "Programming",
+    "scenes": [
+      {
+        "type": "title_card",
+        "heading": "లూప్ పనులను పునరావృతం చేస్తుంది",
+        "narration": "లూప్ ప్రతి విలువకు సూచనలను స్వయంచాలకంగా మళ్లీ మళ్లీ అమలు చేస్తుంది."
+      },
+      {
+        "type": "code_walkthrough",
+        "heading": "కోడ్ గమనించండి",
+        "code": "for i in range(3):\n    print(f\"దశ: {i}\")",
+        "highlight_lines": [1],
+        "narration": "range(3) సున్నా, ఒకటి, రెండు అనే మూడు విలువలను ఇస్తుంది. లూప్ ప్రతి విలువ కోసం ఒక్కసారి నడుస్తుంది."
+      },
+      {
+        "type": "diagram",
+        "heading": "ప్రతి ఇటరేషన్ చూడండి",
+        "items": ["i = 0", "i = 1", "i = 2"],
+        "narration": "ప్రతి సారి తదుపరి విలువ తీసుకుని print చేస్తుంది. ఫలితం 0, 1, 2."
+      }
+    ],
+    "quizzes": [
+      {
+        "id": 1,
+        "question": "పైథాన్‌లో range(3) ఏ విలువలను అందిస్తుంది?",
+        "options": ["1, 2, 3", "0, 1, 2", "1, 2, 3, 4", "0, 1, 2, 3"],
+        "answer": 1,
+        "explanation": "పైథాన్‌లో range సున్నా నుండి ప్రారంభమవుతుంది, కాబట్టి 0, 1, 2 వస్తాయి."
+      }
+    ],
+    "flashcards": [
+      {
+        "front": "Iteration అంటే ఏమిటి?",
+        "back": "లూప్ బాడీ ఒకసారి పూర్తవడాన్ని ఇటరేషన్ అంటారు.",
+        "tip": "ఒక చుట్టూ"
+      }
+    ]
+  },
+  "kn": {
+    "title": "ಪೈಥಾನ್ ಲೂಪ್ ಹೇಗೆ ಕೆಲಸ ಮಾಡುತ್ತದೆ",
+    "level": "beginner",
+    "language": "kn",
+    "category": "Programming",
+    "scenes": [
+      {
+        "type": "title_card",
+        "heading": "ಲೂಪ್ ಕೆಲಸವನ್ನು ಪುನರಾವರ್ತಿಸುತ್ತದೆ",
+        "narration": "ಒಂದು ಅನುಕ್ರಮದ ಪ್ರತಿಯೊಂದು ಮೌಲ್ಯಕ್ಕೂ ಲೂಪ್ ಸೂಚನೆಗಳನ್ನು ಪುನರಾವರ್ತಿಸುತ್ತದೆ."
+      },
+      {
+        "type": "code_walkthrough",
+        "heading": "ಕೋಡ್ ಪರಿಶೀಲಿಸಿ",
+        "code": "for i in range(3):\n    print(f\"ಹಂತ: {i}\")",
+        "highlight_lines": [1],
+        "narration": "range(3) ಮೂರು ಮೌಲ್ಯಗಳನ್ನು ನೀಡುತ್ತದೆ: 0, 1 ಮತ್ತು 2. ಲೂಪ್ ಪ್ರತಿಯೊಂದಕ್ಕೂ ಒಮ್ಮೆ ರನ್ ಆಗುತ್ತದೆ."
+      },
+      {
+        "type": "diagram",
+        "heading": "ಪ್ರತಿ ಇಟರೇಶನ್ ನೋಡಿ",
+        "items": ["i = 0", "i = 1", "i = 2"],
+        "narration": "ಪ್ರತಿ ಹಂತದಲ್ಲೂ ಮುಂದಿನ ಮೌಲ್ಯವನ್ನು ತೆಗೆದುಕೊಂಡು print ಮಾಡುತ್ತದೆ."
+      }
+    ],
+    "quizzes": [
+      {
+        "id": 1,
+        "question": "ಪೈಥಾನ್‌ನಲ್ಲಿ range(3) ಯಾವ ಮೌಲ್ಯಗಳನ್ನು ನೀಡುತ್ತದೆ?",
+        "options": ["1, 2, 3", "0, 1, 2", "0, 1, 2, 3", "1 to 3"],
+        "answer": 1,
+        "explanation": "ಪೈಥಾನ್‌ನಲ್ಲಿ range 0 ಇಂದ ಪ್ರಾರಂಭವಾಗಿ 2 ರವರೆಗೆ ಇರುತ್ತದೆ."
+      }
+    ],
+    "flashcards": [
+      {
+        "front": "ಇಟರೇಶನ್ ಎಂದರೇನು?",
+        "back": "ಲೂಪ್‌ನ ಒಂದು ಸುತ್ತಿನ ಕಾರ್ಯವನ್ನು ಇಟರೇಶನ್ ಎಂದು ಕರೆಯಲಾಗುತ್ತದೆ.",
+        "tip": "ಒಂದು ಸುತ್ತು"
+      }
+    ]
+  },
+  "ml": {
+    "title": "പൈത്തൺ ലൂപ്പ് എങ്ങനെ പ്രവർത്തിക്കുന്നു",
+    "level": "beginner",
+    "language": "ml",
+    "category": "Programming",
+    "scenes": [
+      {
+        "type": "title_card",
+        "heading": "ലൂപ്പ് പ്രവർത്തനങ്ങൾ ആവർത്തിക്കുന്നു",
+        "narration": "ഒരു ശ്രേണിയിലെ ഓരോ ഘടകത്തിനും നിർദ്ദേശങ്ങൾ വീണ്ടും ചെയ്യാൻ ലൂപ്പ് സഹായിക്കുന്നു."
+      },
+      {
+        "type": "code_walkthrough",
+        "heading": "കോഡ് കാണുക",
+        "code": "for i in range(3):\n    print(f\"ഘട്ടം: {i}\")",
+        "highlight_lines": [1],
+        "narration": "range(3) മൂന്ന് മൂല്യങ്ങൾ നൽകുന്നു: 0, 1, 2. ലൂപ്പ് ഓരോ മൂല്യത്തിനും പ്രവർത്തിക്കുന്നു."
+      },
+      {
+        "type": "diagram",
+        "heading": "ഓരോ ഘട്ടവും നിരീക്ഷിക്കുക",
+        "items": ["i = 0", "i = 1", "i = 2"],
+        "narration": "ഓരോ തവണയും അടുത്ത മൂല്യം ലഭിക്കുകയും പ്രിന്റ് ചെയ്യുകയും ചെയ്യുന്നു."
+      }
+    ],
+    "quizzes": [
+      {
+        "id": 1,
+        "question": "range(3) നൽകുന്ന മൂല്യങ്ങൾ ഏവ?",
+        "options": ["1, 2, 3", "0, 1, 2", "0, 1, 2, 3", "1, 2"],
+        "answer": 1,
+        "explanation": "പൈത്തണിൽ range 0 മുതൽ ആരംഭിക്കുന്നു."
+      }
+    ],
+    "flashcards": [
+      {
+        "front": "Iteration എന്നാൽ എന്ത്?",
+        "back": "ലൂപ്പിന്റെ ഒരു വട്ടം പ്രവർത്തനമാണ് ഇറ്ററേഷൻ.",
+        "tip": "ഒരു തവണ"
+      }
+    ]
+  },
+  "bn": {
+    "title": "পাইথন লুপ কীভাবে কাজ করে",
+    "level": "beginner",
+    "language": "bn",
+    "category": "Programming",
+    "scenes": [
+      {
+        "type": "title_card",
+        "heading": "লুপ কাজ পুনরাবৃত্তি করে",
+        "narration": "একটি সিকোয়েন্সের প্রতিটি মানের জন্য লুপ নির্দিষ্ট নির্দেশাবলী স্বয়ংক্রিয়ভাবে চালায়।"
+      },
+      {
+        "type": "code_walkthrough",
+        "heading": "কোডটি দেখুন",
+        "code": "for i in range(3):\n    print(f\"ধাপ: {i}\")",
+        "highlight_lines": [1],
+        "narration": "range(3) তিনটি মান দেয়: 0, 1 এবং 2। লুপ প্রতিটি মানের জন্য একবার চলে।"
+      },
+      {
+        "type": "diagram",
+        "heading": "প্রতিটি ইটারেশন দেখুন",
+        "items": ["i = 0", "i = 1", "i = 2"],
+        "narration": "প্রতিবার পরবর্তী মান নিয়ে প্রিন্ট করে। আউটপুট হয় 0, 1 এবং 2।"
+      }
+    ],
+    "quizzes": [
+      {
+        "id": 1,
+        "question": "Python-এ range(3) কোন মানগুলো দেয়?",
+        "options": ["1, 2, 3", "0, 1, 2", "0, 1, 2, 3", "1, 2"],
+        "answer": 1,
+        "explanation": "পাইথনে রেঞ্জ 0 থেকে শুরু হয়।"
+      }
+    ],
+    "flashcards": [
+      {
+        "front": "Iteration কী?",
+        "back": "লুপের মধ্যে কোডের একটি পূর্ণ চক্রকে Iteration বলে।",
+        "tip": "একবার ঘোরা"
+      }
+    ]
+  },
+  "mr": {
+    "title": "पायथन लूप कसे कार्य करते",
+    "level": "beginner",
+    "language": "mr",
+    "category": "Programming",
+    "scenes": [
+      {
+        "type": "title_card",
+        "heading": "लूप कार्य पुन्हा पुन्हा करते",
+        "narration": "लूप दिलेल्या सिक्वेन्सच्या प्रत्येक व्हॅल्यूसाठी सूचनांची पुनरावृत्ती करते."
+      },
+      {
+        "type": "code_walkthrough",
+        "heading": "कोड पहा",
+        "code": "for i in range(3):\n    print(f\"पायरी: {i}\")",
+        "highlight_lines": [1],
+        "narration": "range(3) तीन मूल्ये देते: 0, 1 आणि 2. लूप प्रत्येक मूल्यासाठी एकदा चालते."
+      },
+      {
+        "type": "diagram",
+        "heading": "प्रत्येक इटरेशन पहा",
+        "items": ["i = 0", "i = 1", "i = 2"],
+        "narration": "प्रत्येक फेरीत पुढील व्हॅल्यू मिळते आणि प्रिंट होते."
+      }
+    ],
+    "quizzes": [
+      {
+        "id": 1,
+        "question": "पायथनमध्ये range(3) कोणती व्हॅल्यू देते?",
+        "options": ["1, 2, 3", "0, 1, 2", "0, 1, 2, 3", "1, 2"],
+        "answer": 1,
+        "explanation": "पायथनमध्ये इंडेक्सिंग 0 पासून सुरू होते, त्यामुळे 0, 1, 2 मिळतात."
+      }
+    ],
+    "flashcards": [
+      {
+        "front": "इटरेशन म्हणजे काय?",
+        "back": "लूपच्या एका पूर्ण फेरीला इटरेशन म्हणतात.",
+        "tip": "एक फेरी"
+      }
+    ]
+  },
+  "gu": {
+    "title": "પાયથોન લૂપ કેવી રીતે કાર્ય કરે છે",
+    "level": "beginner",
+    "language": "gu",
+    "category": "Programming",
+    "scenes": [
+      {
+        "type": "title_card",
+        "heading": "લૂપ કાર્યનું પુનરાવર્તન કરે છે",
+        "narration": "લૂપ દરેક મૂલ્ય માટે આપમેળે સૂચનાઓનું પુનરાવર્તન કરે છે."
+      },
+      {
+        "type": "code_walkthrough",
+        "heading": "કોડ જુઓ",
+        "code": "for i in range(3):\n    print(f\"પગલું: {i}\")",
+        "highlight_lines": [1],
+        "narration": "range(3) ત્રણ મૂલ્યો આપે છે: 0, 1 અને 2."
+      },
+      {
+        "type": "diagram",
+        "heading": "દરેક ઇટરેશન જુઓ",
+        "items": ["i = 0", "i = 1", "i = 2"],
+        "narration": "દરેક ચક્રમાં આગામી મૂલ્ય પ્રિન્ટ થાય છે."
+      }
+    ],
+    "quizzes": [
+      {
+        "id": 1,
+        "question": "range(3) કઈ સંખ્યાઓ ઉત્પન્ન કરે છે?",
+        "options": ["1, 2, 3", "0, 1, 2", "0, 1, 2, 3", "1, 2"],
+        "answer": 1,
+        "explanation": "પાયથોનમાં રેન્જ 0 થી શરૂ થાય છે."
+      }
+    ],
+    "flashcards": [
+      {
+        "front": "Iteration શું છે?",
+        "back": "લૂપના એક પૂર્ણ ચક્રને ઇટરેશન કહેવાય છે.",
+        "tip": "એક ચક્ર"
+      }
+    ]
+  },
+  "es": {
+    "title": "Cómo funciona un bucle en Python",
+    "level": "beginner",
+    "language": "es",
+    "category": "Programación",
+    "scenes": [
+      {
+        "type": "title_card",
+        "heading": "Un bucle repite tareas",
+        "narration": "Un bucle repite una instrucción para cada valor en una secuencia sin duplicar código."
+      },
+      {
+        "type": "code_walkthrough",
+        "heading": "Lee el código",
+        "code": "for i in range(3):\n    print(f\"Paso: {i}\")",
+        "highlight_lines": [1],
+        "narration": "range(3) genera tres números: cero, uno y dos. El bucle se ejecuta una vez por cada valor."
+      },
+      {
+        "type": "diagram",
+        "heading": "Observa cada iteración",
+        "items": ["i = 0", "i = 1", "i = 2"],
+        "narration": "Cada ciclo toma el siguiente número y ejecuta el bloque de código."
+      }
+    ],
+    "quizzes": [
+      {
+        "id": 1,
+        "question": "¿Qué valores genera range(3) en Python?",
+        "options": ["1, 2, 3", "0, 1, 2", "0, 1, 2, 3", "1, 2"],
+        "answer": 1,
+        "explanation": "En Python, los rangos inician en 0 y terminan antes del límite especificado."
+      }
+    ],
+    "flashcards": [
+      {
+        "front": "¿Qué es una iteración?",
+        "back": "Una sola ejecución del cuerpo del bucle para un elemento.",
+        "tip": "Un giro completo"
+      }
+    ]
+  },
+  "fr": {
+    "title": "Comment fonctionne une boucle en Python",
+    "level": "beginner",
+    "language": "fr",
+    "category": "Programmation",
+    "scenes": [
+      {
+        "type": "title_card",
+        "heading": "Une boucle répète une action",
+        "narration": "Une boucle exécute une instruction pour chaque valeur d'une séquence automatiquement."
+      },
+      {
+        "type": "code_walkthrough",
+        "heading": "Examiner le code",
+        "code": "for i in range(3):\n    print(f\"Étape: {i}\")",
+        "highlight_lines": [1],
+        "narration": "range(3) génère trois valeurs: zéro, un et deux. La boucle s'exécute pour chaque valeur."
+      },
+      {
+        "type": "diagram",
+        "heading": "Chaque itération",
+        "items": ["i = 0", "i = 1", "i = 2"],
+        "narration": "À chaque tour, la valeur suivante est prise et affichée."
+      }
+    ],
+    "quizzes": [
+      {
+        "id": 1,
+        "question": "Quelles valeurs génère range(3) en Python?",
+        "options": ["1, 2, 3", "0, 1, 2", "0, 1, 2, 3", "1, 2"],
+        "answer": 1,
+        "explanation": "En Python, l'indexation commence à 0, produisant 0, 1 et 2."
+      }
+    ],
+    "flashcards": [
+      {
+        "front": "Qu'est-ce qu'une itération?",
+        "back": "Une exécution unique du corps de la boucle pour un élément donné.",
+        "tip": "Un tour complet"
+      }
+    ]
+  },
+  "de": {
+    "title": "Wie eine Python-Schleife funktioniert",
+    "level": "beginner",
+    "language": "de",
+    "category": "Programmierung",
+    "scenes": [
+      {
+        "type": "title_card",
+        "heading": "Schleifen wiederholen Aufgaben",
+        "narration": "Eine Schleife führt Anweisungen für jeden Wert einer Sequenz automatisch aus."
+      },
+      {
+        "type": "code_walkthrough",
+        "heading": "Code verstehen",
+        "code": "for i in range(3):\n    print(f\"Schritt: {i}\")",
+        "highlight_lines": [1],
+        "narration": "range(3) erzeugt drei Werte: 0, 1 und 2. Die Schleife läuft einmal für jeden Wert."
+      },
+      {
+        "type": "diagram",
+        "heading": "Jede Iteration verfolgen",
+        "items": ["i = 0", "i = 1", "i = 2"],
+        "narration": "Jeder Durchlauf nimmt den nächsten Wert und führt den Codeblock aus."
+      }
+    ],
+    "quizzes": [
+      {
+        "id": 1,
+        "question": "Welche Werte liefert range(3) in Python?",
+        "options": ["1, 2, 3", "0, 1, 2", "0, 1, 2, 3", "1, 2"],
+        "answer": 1,
+        "explanation": "In Python beginnt range bei 0 und stoppt vor der angegebenen Zahl."
+      }
+    ],
+    "flashcards": [
+      {
+        "front": "Was ist eine Iteration?",
+        "back": "Eine einzelne Ausführung des Schleifenkörpers.",
+        "tip": "Ein Durchlauf"
+      }
+    ]
+  },
+  "ja": {
+    "title": "Pythonのループの仕組み",
+    "level": "beginner",
+    "language": "ja",
+    "category": "プログラミング",
+    "scenes": [
+      {
+        "type": "title_card",
+        "heading": "ループは処理を繰り返す",
+        "narration": "ループを使うと、シーケンスの各値に対して自動的に命令を繰り返すことができます。"
+      },
+      {
+        "type": "code_walkthrough",
+        "heading": "コードを見る",
+        "code": "for i in range(3):\n    print(f\"ステップ: {i}\")",
+        "highlight_lines": [1],
+        "narration": "range(3)は0、1、2の3つの値を生成し、ループは各値ごとに1回実行されます。"
+      },
+      {
+        "type": "diagram",
+        "heading": "各イテレーションの流れ",
+        "items": ["i = 0", "i = 1", "i = 2"],
+        "narration": "各ステップで次の値が取り出され、printが実行されます。"
+      }
+    ],
+    "quizzes": [
+      {
+        "id": 1,
+        "question": "Pythonのrange(3)が生成する値はどれですか？",
+        "options": ["1, 2, 3", "0, 1, 2", "0, 1, 2, 3", "1, 2"],
+        "answer": 1,
+        "explanation": "Pythonのrangeは0から始まり、指定された値の直前までを生成します。"
+      }
+    ],
+    "flashcards": [
+      {
+        "front": "イテレーション（反復）とは？",
+        "back": "ループの本体が1回実行される単位のことです。",
+        "tip": "1回の周回"
+      }
+    ]
+  }
+}

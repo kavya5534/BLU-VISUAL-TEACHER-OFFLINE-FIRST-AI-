@@ -1,0 +1,283 @@
+{
+  "demo_learner": {
+    "id": "usr_demo12345",
+    "username": "demo_learner",
+    "email": "demo@blu.ai",
+    "name": "Alex Learner",
+    "password_hash": "b3998d724a17ce1523dd367556c6be5362e36171e3b7e75255f1710bb04b3fda",
+    "salt": "blu_demo_salt_99",
+    "language": "en",
+    "level": "beginner",
+    "created_at": 1793114405,
+    "xp": 350,
+    "level_num": 3,
+    "streak_days": 4,
+    "quizzes_taken": 3,
+    "badges": [
+      "First Lesson",
+      "Honest Scholar (Anti-Cheat Master)",
+      "Polyglot Explorer"
+    ],
+    "history": [
+      {
+        "timestamp": 1793028005,
+        "lesson_id": "course-python-loops",
+        "lesson_title": "Python Loops & Iteration",
+        "score": 2,
+        "total": 2,
+        "percent": 100,
+        "strikes": 0,
+        "time_taken_sec": 32,
+        "earned_xp": 180,
+        "integrity_status": "Clean (Zero Tab Switches)"
+      }
+    ]
+  },
+  "priya_test": {
+    "id": "usr_0003aa71f7",
+    "username": "priya_test",
+    "email": "priya@test.com",
+    "name": "Priya Learner",
+    "password_hash": "cf71ce6df62aa8c0fe9e9408a39fdb97097a5ea1633d584e0a15695bcebcde5e",
+    "salt": "a32460b1789846f9",
+    "language": "hi",
+    "level": "beginner",
+    "created_at": 1793114405,
+    "xp": 100,
+    "level_num": 1,
+    "streak_days": 1,
+    "quizzes_taken": 0,
+    "badges": [
+      "New Explorer"
+    ],
+    "history": []
+  },
+  "kavya": {
+    "id": "usr_304369e56a",
+    "username": "kavya",
+    "email": "kavya89711272@gmail.com",
+    "name": "kavya",
+    "password_hash": "d02621730902a26e82537d026cadfbefb27a399741544c88db66539104525540",
+    "salt": "dc0f571a41b74b23",
+    "language": "en",
+    "level": "beginner",
+    "created_at": 1793117579,
+    "xp": 100,
+    "level_num": 2,
+    "streak_days": 1,
+    "quizzes_taken": 1,
+    "badges": [
+      "New Explorer"
+    ],
+    "history": [
+      {
+        "timestamp": 1793120720,
+        "lesson_id": "quick-quiz",
+        "lesson_title": "Lesson Quiz",
+        "score": 0,
+        "total": 2,
+        "percent": 0,
+        "strikes": 2,
+        "time_taken_sec": 60,
+        "earned_xp": 0,
+        "integrity_status": "2 Tab Switch Strikes Recorded"
+      },
+      {
+        "timestamp": 1793123228,
+        "lesson_id": "d51153e49e2e",
+        "lesson_title": "ಕಲಿಯೋಣ: How does a Python loop work?",
+        "score": 0,
+        "total": 2,
+        "percent": 0,
+        "strikes": 1,
+        "time_taken_sec": 60,
+        "earned_xp": 0,
+        "integrity_status": "1 Tab Switch Strikes Recorded"
+      },
+      {
+        "timestamp": 1793125509,
+        "lesson_id": "fbe361c9b1b3",
+        "lesson_title": "నేర్చుకుందాం: what is time management",
+        "score": 0,
+        "total": 2,
+        "percent": 0,
+        "strikes": 2,
+        "time_taken_sec": 60,
+        "earned_xp": 0,
+        "integrity_status": "2 Tab Switch Strikes Recorded"
+      }
+    ]
+  },
+  "hema": {
+    "id": "usr_0d21ff098e",
+    "username": "hema",
+    "email": "hema@gmail.com",
+    "name": "hema",
+    "password_hash": "cd8cf9f5ce915b217f79224d4e84c804b2b73a4746583883092ca841a2b386a5",
+    "salt": "79e861b2ce374b68",
+    "language": "en",
+    "level": "beginner",
+    "created_at": 1793123449,
+    "xp": 230,
+    "level_num": 3,
+    "streak_days": 1,
+    "quizzes_taken": 1,
+    "badges": [
+      "New Explorer"
+    ],
+    "history": [
+      {
+        "timestamp": 1793125482,
+        "lesson_id": "babf62b42256",
+        "lesson_title": "Mastering: How does a Python loop work?",
+        "score": 0,
+        "total": 2,
+        "percent": 0,
+        "strikes": 2,
+        "time_taken_sec": 60,
+        "earned_xp": 0,
+        "integrity_status": "2 Tab Switch Strikes Recorded"
+      },
+      {
+        "timestamp": 1793125864,
+        "lesson_id": "babf62b42256",
+        "lesson_title": "Mastering: How does a Python loop work?",
+        "score": 2,
+        "total": 2,
+        "percent": 100,
+        "strikes": 0,
+        "time_taken_sec": 18,
+        "earned_xp": 130,
+        "integrity_status": "Clean (Zero Tab Switches)"
+      }
+    ]
+  },
+  "priya": {
+    "id": "usr_b57ae1d27f",
+    "username": "priya",
+    "email": "priya89711@gmail.com",
+    "name": "priya",
+    "password_hash": "92ea5c506147ce19c39e2d84ed799edaa8c62e34460919e535c6639257d4267f",
+    "salt": "cf91907a4a004471",
+    "language": "en",
+    "level": "intermediate",
+    "created_at": 1793130633,
+    "xp": 390,
+    "level_num": 4,
+    "streak_days": 1,
+    "quizzes_taken": 1,
+    "badges": [
+      "New Explorer"
+    ],
+    "history": [
+      {
+        "timestamp": 1793131277,
+        "lesson_id": "ade48a6be61c",
+        "lesson_title": "ಕಲಿಯೋಣ: python",
+        "score": 0,
+        "total": 2,
+        "percent": 0,
+        "strikes": 0,
+        "time_taken_sec": 25,
+        "earned_xp": 0,
+        "integrity_status": "Clean (Zero Tab Switches)"
+      },
+      {
+        "timestamp": 1793131302,
+        "lesson_id": "ade48a6be61c",
+        "lesson_title": "ಕಲಿಯೋಣ: python",
+        "score": 0,
+        "total": 2,
+        "percent": 0,
+        "strikes": 4,
+        "time_taken_sec": 57,
+        "earned_xp": 0,
+        "integrity_status": "4 Tab Switch Strikes Recorded"
+      },
+      {
+        "timestamp": 1793131302,
+        "lesson_id": "ade48a6be61c",
+        "lesson_title": "ಕಲಿಯೋಣ: python",
+        "score": 0,
+        "total": 2,
+        "percent": 0,
+        "strikes": 4,
+        "time_taken_sec": 57,
+        "earned_xp": 0,
+        "integrity_status": "4 Tab Switch Strikes Recorded"
+      },
+      {
+        "timestamp": 1793131343,
+        "lesson_id": "ade48a6be61c",
+        "lesson_title": "ಕಲಿಯೋಣ: python",
+        "score": 1,
+        "total": 2,
+        "percent": 50,
+        "strikes": 0,
+        "time_taken_sec": 21,
+        "earned_xp": 80,
+        "integrity_status": "Clean (Zero Tab Switches)"
+      },
+      {
+        "timestamp": 1793131505,
+        "lesson_id": "ade48a6be61c",
+        "lesson_title": "ಕಲಿಯೋಣ: python",
+        "score": 0,
+        "total": 2,
+        "percent": 0,
+        "strikes": 3,
+        "time_taken_sec": 57,
+        "earned_xp": 0,
+        "integrity_status": "3 Tab Switch Strikes Recorded"
+      },
+      {
+        "timestamp": 1793131540,
+        "lesson_id": "ade48a6be61c",
+        "lesson_title": "ಕಲಿಯೋಣ: python",
+        "score": 2,
+        "total": 2,
+        "percent": 100,
+        "strikes": 0,
+        "time_taken_sec": 23,
+        "earned_xp": 130,
+        "integrity_status": "Clean (Zero Tab Switches)"
+      },
+      {
+        "timestamp": 1793133112,
+        "lesson_id": "dbaf40416fa1",
+        "lesson_title": "Mastering: hi how are you can you tell me how is your day",
+        "score": 0,
+        "total": 2,
+        "percent": 0,
+        "strikes": 2,
+        "time_taken_sec": 60,
+        "earned_xp": 0,
+        "integrity_status": "2 Tab Switch Strikes Recorded"
+      },
+      {
+        "timestamp": 1793133433,
+        "lesson_id": "dbaf40416fa1",
+        "lesson_title": "Mastering: hi how are you can you tell me how is your day",
+        "score": 0,
+        "total": 2,
+        "percent": 0,
+        "strikes": 2,
+        "time_taken_sec": 60,
+        "earned_xp": 0,
+        "integrity_status": "2 Tab Switch Strikes Recorded"
+      },
+      {
+        "timestamp": 1793142936,
+        "lesson_id": "f26f8d3a273b",
+        "lesson_title": "Mastering: How does a Python loop work?",
+        "score": 1,
+        "total": 2,
+        "percent": 50,
+        "strikes": 0,
+        "time_taken_sec": 25,
+        "earned_xp": 80,
+        "integrity_status": "Clean (Zero Tab Switches)"
+      }
+    ]
+  }
+}

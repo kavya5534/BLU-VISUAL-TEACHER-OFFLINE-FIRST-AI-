@@ -1,0 +1,1203 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Blu Visual Teacher — Offline Control Center & Local AI Brain</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <!-- Client-side OCR support for textbook photos -->
+  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <header class="app-header">
+    <div class="header-left">
+      <div class="brand">
+        <div class="brand-logo">BLU</div>
+        <div class="brand-text">
+          <span class="brand-title">VISUAL TEACHER</span>
+          <span class="brand-badge" id="system-mode-badge">LOCAL-FIRST · OFFLINE READY</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Navigation Tabs -->
+    <nav class="nav-tabs" id="nav-tabs">
+      <button class="nav-tab active" data-tab="studio">🎬 Studio</button>
+      <button class="nav-tab" data-tab="courses">📚 Course Library</button>
+      <button class="nav-tab" data-tab="quiz">📝 Timed Quiz <span class="tab-pill">Anti-Cheat</span></button>
+      <button class="nav-tab" data-tab="flashcards">🗂️ Flashcards</button>
+      <button class="nav-tab" data-tab="brain">🧠 Local AI Brain</button>
+      <button class="nav-tab" data-tab="tutor">📸 PDF & Camera Tutor</button>
+      <button class="nav-tab" data-tab="camera">👁️ AI Camera</button>
+      <button class="nav-tab" data-tab="control">🎛️ Control Center</button>
+      <button class="nav-tab" data-tab="progress">🏆 My Progress</button>
+      <button class="nav-tab" data-tab="auth" id="nav-auth-tab">👤 Account</button>
+    </nav>
+
+    <!-- Header Stats & User Profile -->
+    <div class="header-right">
+      <div class="stat-chip offline-status-chip" id="header-offline-pill" title="Offline Mode Status">
+        <span class="status-indicator-dot online" id="header-conn-dot"></span>
+        <span id="header-conn-text">Online</span>
+      </div>
+      <div class="stat-chip streak-chip" title="Daily Learning Streak">
+        <span class="chip-icon">🔥</span>
+        <span id="header-streak">3 Days</span>
+      </div>
+      <div class="stat-chip xp-chip" title="Earned Learning XP">
+        <span class="chip-icon">⚡</span>
+        <span id="header-xp">120 XP</span>
+      </div>
+      <div class="stat-chip level-chip" title="Current Level">
+        <span id="header-level">Lvl 1</span>
+      </div>
+      
+      <!-- User Account Chip -->
+      <div class="user-profile-btn" id="header-user-btn" title="Account / Profile">
+        <span class="user-avatar" id="header-user-avatar">👤</span>
+        <span class="user-name" id="header-user-name">Sign In</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-container">
+
+    <!-- ========================================== -->
+    <!-- TAB 1: STUDIO (LESSON GENERATOR & PLAYER)   -->
+    <!-- ========================================== -->
+    <div id="tab-studio" class="tab-pane active">
+      <section class="intro">
+        <p class="eyebrow">LEARN BY SEEING IT MOVE</p>
+        <h1>Turn any concept into<br><em>a visual lesson.</em></h1>
+        <p>Short animated scenes, studio-quality Neural AI voice narration, downloadable MP4 videos, and interactive study decks in 13+ languages.</p>
+      <div class="loop-demo-banner" style="margin-top:1.2rem;padding:1rem 1.4rem;background:linear-gradient(135deg,#0a2540,#0d3a6e);border:1.5px solid #2563eb;border-radius:14px;display:flex;align-items:center;gap:1rem;flex-wrap:wrap;">
+        <span style="font-size:2rem;">🔁</span>
+        <div style="flex:1;min-width:180px;">
+          <strong style="color:#81d8ff;font-size:1rem;">Try the Animated Python Loop Lesson</strong>
+          <p style="color:#a8c8e8;font-size:0.85rem;margin:0.2rem 0 0;">Moving number cards · Loop arrow · Progressive code reveal · MP4 export</p>
+        </div>
+        <button id="load-loop-lesson-btn" class="btn-primary" style="white-space:nowrap;padding:0.6rem 1.2rem;font-size:0.9rem;">🎬 Load Loop Lesson</button>
+      </div>
+      </section>
+
+      <section class="workspace">
+        <!-- Generator Panel -->
+        <div class="panel generator-panel">
+          <form id="lesson-form">
+            <div class="panel-header">
+              <h3>Create New Lesson</h3>
+              <span class="badge-subtle">Neural AI Audio Ready</span>
+            </div>
+
+            <label for="topic">What should we explain?</label>
+            <input id="topic" required maxlength="200" value="How does a Python loop work?" placeholder="e.g. Neural Networks, Photosynthesis, DNS, Black Holes...">
+
+            <div class="form-row two">
+              <div>
+                <label for="level">Learner Level</label>
+                <select id="level">
+                  <option value="beginner">Beginner</option>
+                  <option value="intermediate">Intermediate</option>
+                </select>
+              </div>
+              <div>
+                <label for="language">Language & Voice</label>
+                <select id="language">
+                  <option value="en">English (US Neural)</option>
+                  <option value="hi">Hindi (हिन्दी Neural)</option>
+                  <option value="ta">Tamil (தமிழ் Neural)</option>
+                  <option value="te">Telugu (తెలుగు Neural)</option>
+                  <option value="kn">Kannada (ಕನ್ನಡ Neural)</option>
+                  <option value="ml">Malayalam (മലയാളം Neural)</option>
+                  <option value="bn">Bengali (বাংলা Neural)</option>
+                  <option value="mr">Marathi (मराठी Neural)</option>
+                  <option value="gu">Gujarati (ગુજરાતી Neural)</option>
+                  <option value="es">Spanish (Español Neural)</option>
+                  <option value="fr">French (Français Neural)</option>
+                  <option value="de">German (Deutsch Neural)</option>
+                  <option value="ja">Japanese (日本語 Neural)</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Voice Customization -->
+            <div class="form-row two">
+              <div>
+                <label for="voice-gender">AI Voice Pitch / Style</label>
+                <select id="voice-gender">
+                  <option value="male">Natural Male Voice</option>
+                  <option value="female">Natural Female Voice</option>
+                </select>
+              </div>
+              <div>
+                <label for="seconds">Target Length <b id="seconds-label">45s</b></label>
+                <input id="seconds" type="range" min="30" max="90" step="15" value="45">
+              </div>
+            </div>
+
+            <button id="generate" type="submit" class="btn-primary">
+              <span>Generate Visual Lesson + Neural Audio</span>
+              <span class="btn-icon">⚡</span>
+            </button>
+          </form>
+
+          <!-- Quick File Tools: JSON & MP4 -->
+          <div class="file-tools-box">
+            <span class="tools-title">File Import & Export</span>
+            <div class="file-btn-grid">
+              <label class="btn-secondary file-upload-label" title="Upload a JSON lesson file">
+                📥 Import JSON
+                <input type="file" id="json-file-input" accept=".json" style="display:none">
+              </label>
+              <button id="export-json-btn" class="btn-secondary" disabled title="Export current lesson as JSON file">
+                💾 Export JSON
+              </button>
+              <label class="btn-secondary file-upload-label" title="Upload custom MP4 video">
+                🎥 Upload MP4
+                <input type="file" id="mp4-file-input" accept="video/mp4,video/webm,video/quicktime" style="display:none">
+              </label>
+              <button id="save-course-btn" class="btn-secondary" disabled title="Save current lesson to Course Library">
+                ⭐ Save to Library
+              </button>
+            </div>
+          </div>
+
+          <p class="hint" id="planner-hint">🎙️ Studio-quality Neural AI voice narration generated automatically for your selected language!</p>
+        </div>
+
+        <!-- Stage Player Panel -->
+        <div class="panel player-panel">
+          <div class="player-top">
+            <div class="player-top-left">
+              <span id="status" class="status-pill">READY TO LEARN</span>
+              <span id="language-pill" class="lang-tag">EN NEURAL</span>
+            </div>
+            <div class="player-top-right">
+              <span id="scene-count">0 SCENES</span>
+            </div>
+          </div>
+
+          <!-- Visual Stage (Scenes or Video) -->
+          <div id="stage-wrapper" class="stage-wrapper">
+            <!-- Normal Canvas/SVG Scene Stage -->
+            <div id="stage" class="stage">
+              <div class="orb">▶</div>
+              <h2>Your lesson appears here</h2>
+              <p>Enter any topic above to generate animated scenes with authentic AI voice narration in your selected language.</p>
+            </div>
+
+            <!-- In-browser MP4 Video Player View -->
+            <div id="video-container" class="video-container" style="display:none;">
+              <video id="mp4-player" controls playsinline preload="metadata">
+                Your browser does not support the video tag.
+              </video>
+              <div class="video-overlay-bar">
+                <span id="video-filename">Lesson Video</span>
+                <button id="close-video-btn" class="btn-sm">Return to Interactive Stage ✕</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Audio Waveform / Stream Bar -->
+          <div class="audio-hud-bar" id="audio-hud-bar">
+            <div class="audio-hud-info">
+              <span class="audio-live-icon">🎙️</span>
+              <span id="audio-status-text">AI Voice Ready</span>
+            </div>
+            <div class="audio-actions">
+              <button id="neural-speak-btn" class="btn-player btn-sm highlight" title="Play Neural AI Audio Narration">
+                ▶ Listen AI Voice
+              </button>
+            </div>
+          </div>
+
+          <!-- Hidden Native Audio Player for Neural AI Voice -->
+          <audio id="neural-audio-player" preload="auto" style="display:none;"></audio>
+
+          <!-- Captions Box -->
+          <div class="caption-container">
+            <div class="caption-icon">💬</div>
+            <div class="caption" id="caption">Captions and narration text will appear here.</div>
+          </div>
+
+          <!-- Progress Bar -->
+          <div class="progress">
+            <div id="progress-fill"></div>
+          </div>
+
+          <!-- Controls Bar -->
+          <div class="controls">
+            <button id="play" class="btn-player" disabled>▶ Play</button>
+            <button id="prev" class="btn-player secondary" disabled>← Previous</button>
+            <button id="next" class="btn-player secondary" disabled>Next →</button>
+            
+            <div class="controls-right">
+              <button id="toggle-video-view" class="btn-player secondary" style="display:none;" title="Toggle MP4 Video / Stage">
+                🎬 Video Mode
+              </button>
+              <button id="export" class="btn-player highlight" disabled title="Render and export 720p MP4 with FFmpeg">
+                Export MP4 ↓
+              </button>
+            </div>
+          </div>
+
+          <!-- Quick Jump Buttons to Quiz & Flashcards for active lesson -->
+          <div class="stage-quick-actions" id="quick-actions" style="display:none;">
+            <span>Practice this topic:</span>
+            <button id="jump-to-quiz-btn" class="action-chip">📝 Take Timed Quiz</button>
+            <button id="jump-to-flashcards-btn" class="action-chip">🗂️ Study Flashcards</button>
+          </div>
+
+          <p class="hint" id="message">Tip: Press Play to start continuous auto-play with synchronized narration timing.</p>
+        </div>
+      </section>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- TAB 2: COURSE LIBRARY                      -->
+    <!-- ========================================== -->
+    <div id="tab-courses" class="tab-pane">
+      <div class="section-heading">
+        <div class="heading-text">
+          <p class="eyebrow">PRE-BUILT CURRICULUM</p>
+          <h2>Course Library</h2>
+          <p>Curated visual lessons with interactive scenes, anti-cheat quizzes, and flashcard decks.</p>
+        </div>
+        <div class="library-controls">
+          <input type="text" id="course-search" placeholder="🔍 Search courses, topics, tags..." class="search-input">
+        </div>
+      </div>
+
+      <!-- Category Filter Pills -->
+      <div class="filter-bar">
+        <button class="filter-pill active" data-category="all">All Topics</button>
+        <button class="filter-pill" data-category="Programming">💻 Programming</button>
+        <button class="filter-pill" data-category="AI & Machine Learning">🤖 AI & Machine Learning</button>
+        <button class="filter-pill" data-category="Networking">🌐 Networking & Web</button>
+        <button class="filter-pill" data-category="Science & Biology">🌿 Science & Biology</button>
+        <button class="filter-pill" data-category="Algorithms">⚡ Algorithms</button>
+        <button class="filter-pill" data-category="Software Engineering">🛠️ Software Tools</button>
+      </div>
+
+      <!-- Course Cards Grid -->
+      <div class="courses-grid" id="courses-grid">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- TAB 3: ANTI-CHEAT TIMED QUIZZES            -->
+    <!-- ========================================== -->
+    <div id="tab-quiz" class="tab-pane">
+      <div class="quiz-container">
+        <!-- Quiz Header & Anti-cheat Status -->
+        <div class="quiz-top-bar">
+          <div class="quiz-meta">
+            <span class="quiz-badge">PROCTORED ASSESSMENT</span>
+            <h2 id="quiz-title">Interactive Lesson Quiz</h2>
+            <p id="quiz-subtitle">Answer the questions before the timer expires. Tab-switching is strictly monitored.</p>
+          </div>
+
+          <div class="proctor-hud">
+            <div class="timer-box" id="timer-box">
+              <span class="timer-icon">⏱️</span>
+              <span class="timer-value" id="quiz-timer">01:00</span>
+            </div>
+
+            <div class="anti-cheat-status" id="anti-cheat-hud">
+              <span class="hud-label">Integrity Monitor:</span>
+              <div class="strikes-pills">
+                <span class="strike-dot" id="strike-dot-1"></span>
+                <span class="strike-dot" id="strike-dot-2"></span>
+                <span class="strike-dot" id="strike-dot-3"></span>
+              </div>
+              <span class="hud-strikes-text" id="strikes-text">0 / 3 Strikes</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="quiz-card panel">
+          <!-- Start State -->
+          <div id="quiz-start-screen" class="quiz-screen">
+            <div class="quiz-start-hero">
+              <div class="quiz-icon-large">🛡️</div>
+              <h3>Anti-Cheat Timed Assessment</h3>
+              <p>This quiz verifies your mastery of the topic under proctored test conditions.</p>
+              
+              <div class="quiz-rules-box">
+                <h4>⚠️ Test Rules & Proctoring Policies:</h4>
+                <ul>
+                  <li><strong>Tab Switching Forbidden:</strong> Switching tabs or opening external windows triggers a strike and deducts 15 seconds.</li>
+                  <li><strong>3-Strike Rule:</strong> Reaching 3 strikes immediately fails and submits the quiz with a penalty.</li>
+                  <li><strong>Zero Strike Bonus:</strong> Completing the test cleanly with 0 tab switches awards the <em>Honest Scholar</em> badge and bonus +30 XP!</li>
+                </ul>
+              </div>
+
+              <div class="quiz-start-actions">
+                <button id="start-quiz-btn" class="btn-primary btn-large">Start Proctored Quiz 🚀</button>
+                <button id="quiz-fullscreen-btn" class="btn-secondary">⛶ Enable Fullscreen Mode</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Active Question State -->
+          <div id="quiz-question-screen" class="quiz-screen" style="display:none;">
+            <div class="quiz-progress-header">
+              <span id="question-number">Question 1 of 3</span>
+              <span class="quiz-topic-tag" id="quiz-topic-tag">Topic</span>
+            </div>
+            
+            <h3 id="question-text" class="question-text">Loading question...</h3>
+            <div class="options-list" id="options-list"></div>
+
+            <div id="question-feedback" class="question-feedback" style="display:none;">
+              <div id="feedback-icon">✓</div>
+              <div id="feedback-text">Explanation goes here.</div>
+            </div>
+
+            <div class="quiz-footer">
+              <button id="submit-answer-btn" class="btn-primary" disabled>Check Answer</button>
+              <button id="next-question-btn" class="btn-secondary" style="display:none;">Next Question →</button>
+            </div>
+          </div>
+
+          <!-- Results State -->
+          <div id="quiz-result-screen" class="quiz-screen" style="display:none;">
+            <div class="result-hero">
+              <div class="result-score-circle" id="result-score-circle">
+                <span id="result-score-percent">100%</span>
+                <span class="score-sub">Score</span>
+              </div>
+              <h3 id="result-headline">Outstanding Job!</h3>
+              <p id="result-detail">You answered 3 out of 3 questions correctly.</p>
+
+              <div class="result-stats-row">
+                <div class="res-stat-card">
+                  <span class="res-label">XP Earned</span>
+                  <span class="res-value" id="result-xp">+180 XP</span>
+                </div>
+                <div class="res-stat-card">
+                  <span class="res-label">Tab Switches</span>
+                  <span class="res-value" id="result-strikes">0 (Clean)</span>
+                </div>
+                <div class="res-stat-card">
+                  <span class="res-label">Integrity Status</span>
+                  <span class="res-value" id="result-integrity">🛡️ Verified Clean</span>
+                </div>
+              </div>
+
+              <div class="result-actions">
+                <button id="retake-quiz-btn" class="btn-primary">Retake Quiz</button>
+                <button id="review-flashcards-btn" class="btn-secondary">Study Flashcards</button>
+                <button id="back-to-studio-btn" class="btn-secondary">Back to Studio</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- TAB 4: IMPROVED FLASHCARDS DECK            -->
+    <!-- ========================================== -->
+    <div id="tab-flashcards" class="tab-pane">
+      <div class="flashcards-container">
+        <div class="section-heading">
+          <div class="heading-text">
+            <p class="eyebrow">ACTIVE RECALL & SPACED REPETITION</p>
+            <h2 id="fc-deck-title">Interactive Flashcards</h2>
+            <p>Click card or press Spacebar to flip. Use the tools below to study effectively.</p>
+          </div>
+          <div class="deck-stats">
+            <button id="fc-filter-bookmarks-btn" class="btn-chip" title="Filter bookmarked cards">🔖 Bookmarks (<span id="fc-bookmark-count">0</span>)</button>
+            <span class="deck-count" id="fc-counter">Card 1 of 3</span>
+          </div>
+        </div>
+
+        <!-- NEW CONTROLS TOOLBAR (Preserves dark-blue design) -->
+        <div class="fc-tools-ribbon">
+          <button id="fc-tool-listen" class="fc-tool-btn" title="Read the card aloud">
+            <span>🔊</span> Listen
+          </button>
+          <button id="fc-tool-hint" class="fc-tool-btn" title="Reveal a clue before flipping">
+            <span>💡</span> Hint
+          </button>
+          <button id="fc-tool-explain" class="fc-tool-btn" title="Generate simple explanation using local AI">
+            <span>🧠</span> Explain
+          </button>
+          <button id="fc-tool-kannada" class="fc-tool-btn highlight-kannada" title="Show bilingual Kannada explanation">
+            <span>🌐</span> Kannada
+          </button>
+          <button id="fc-tool-bookmark" class="fc-tool-btn" title="Bookmark this card">
+            <span id="fc-bookmark-icon">☆</span> Bookmark
+          </button>
+          <button id="fc-tool-shuffle" class="fc-tool-btn" title="Randomize the deck order">
+            <span>🔀</span> Shuffle
+          </button>
+          <button id="fc-tool-undo" class="fc-tool-btn" title="Reverse the previous review action">
+            <span>↩️</span> Undo
+          </button>
+          <div class="fc-export-dropdown">
+            <button id="fc-tool-export" class="fc-tool-btn" title="Export deck as JSON or CSV">
+              <span>💾</span> Export ▾
+            </button>
+            <div class="fc-export-menu" id="fc-export-menu" style="display:none;">
+              <button id="fc-export-json">Export as JSON</button>
+              <button id="fc-export-csv">Export as CSV</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hint Overlay Banner -->
+        <div id="fc-hint-banner" class="fc-hint-banner" style="display:none;">
+          <div class="hint-header">
+            <span>💡 Clue & Study Hint:</span>
+            <button id="close-hint-btn" class="hint-close-btn">✕</button>
+          </div>
+          <p id="fc-hint-text">Loading hint...</p>
+        </div>
+
+        <!-- Local AI Explanation Drawer -->
+        <div id="fc-ai-drawer" class="fc-ai-drawer" style="display:none;">
+          <div class="ai-drawer-header">
+            <span id="fc-drawer-title">🧠 Local AI Explanation</span>
+            <span class="cache-chip" id="fc-ai-cache-chip">⚡ Cached</span>
+            <button id="close-ai-drawer-btn" class="hint-close-btn">✕</button>
+          </div>
+          <div class="ai-drawer-content" id="fc-ai-drawer-content">Loading explanation...</div>
+        </div>
+
+        <!-- 3D Flippable Flashcard -->
+        <div class="flashcard-scene">
+          <div class="flashcard" id="active-flashcard">
+            <div class="flashcard-face flashcard-front">
+              <div class="fc-badge-row">
+                <span class="fc-badge">FRONT · CONCEPT</span>
+                <span class="fc-starred-badge" id="card-star-badge" style="display:none;">🔖 BOOKMARKED</span>
+              </div>
+              <div class="fc-content" id="fc-front-text">What is an iteration?</div>
+              <div class="fc-hint">💡 Click card or press Spacebar to flip</div>
+            </div>
+            <div class="flashcard-face flashcard-back">
+              <div class="fc-badge-row">
+                <span class="fc-badge">BACK · DEFINITION & TIP</span>
+                <span class="fc-starred-badge" id="card-star-badge-back" style="display:none;">🔖 BOOKMARKED</span>
+              </div>
+              <div class="fc-content" id="fc-back-text">A single pass of executing the loop body.</div>
+              <div class="fc-tip" id="fc-tip-text">Tip: Think of one lap around a racetrack.</div>
+              <div class="fc-hint">💡 Click card or press Spacebar to flip back</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Existing Standard Navigation & Rating Controls -->
+        <div class="fc-controls">
+          <button id="fc-prev-btn" class="btn-secondary">← Previous</button>
+          
+          <div class="fc-rating-buttons">
+            <button id="fc-again-btn" class="btn-rating again">❌ Needs Review</button>
+            <button id="fc-flip-btn" class="btn-rating flip">🔄 Flip Card</button>
+            <button id="fc-mastered-btn" class="btn-rating mastered">✓ Got It!</button>
+          </div>
+
+          <button id="fc-next-btn" class="btn-secondary">Next →</button>
+        </div>
+
+        <!-- Mastery Progress -->
+        <div class="fc-mastery-card panel">
+          <div class="fc-mastery-header">
+            <span>Deck Mastery Progress</span>
+            <span id="fc-mastery-rate">0% Mastered</span>
+          </div>
+          <div class="progress">
+            <div id="fc-progress-fill" style="width: 0%;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- TAB 5: LOCAL AI BRAIN (OLLAMA INTEGRATION) -->
+    <!-- ========================================== -->
+    <div id="tab-brain" class="tab-pane">
+      <div class="section-heading">
+        <div class="heading-text">
+          <p class="eyebrow">OFFLINE INTELLIGENCE</p>
+          <h2>Local AI Brain</h2>
+          <p>Powered by local Ollama with instant disk-caching. Revisit answers anytime with zero model overhead.</p>
+        </div>
+        <div class="brain-status-chip">
+          <span class="live-dot" id="brain-ollama-dot"></span>
+          <span id="brain-ollama-label">Checking Ollama...</span>
+        </div>
+      </div>
+
+      <!-- Brain Tools Grid -->
+      <div class="brain-grid">
+        <!-- Tool 1: Explain Topic -->
+        <div class="panel brain-card">
+          <div class="bc-header">
+            <span class="bc-icon">💡</span>
+            <h3>Explain Difficult Topic</h3>
+          </div>
+          <p class="bc-desc">Break down any complex engineering, math, or science concept into clear intuition.</p>
+          <input type="text" id="brain-explain-input" placeholder="e.g. Backpropagation, Pointers in C, Quantum Entanglement" class="mb-2">
+          <div class="form-row two mb-2">
+            <select id="brain-explain-level">
+              <option value="beginner">Beginner Intuition</option>
+              <option value="intermediate">Intermediate Breakdown</option>
+            </select>
+            <select id="brain-explain-lang">
+              <option value="en">English</option>
+              <option value="hi">Hindi (हिन्दी)</option>
+              <option value="kn">Kannada (ಕನ್ನಡ)</option>
+              <option value="ta">Tamil (தமிழ்)</option>
+              <option value="te">Telugu (తెలుగు)</option>
+              <option value="es">Spanish (Español)</option>
+            </select>
+          </div>
+          <button id="brain-explain-btn" class="btn-primary btn-block">Explain with Local AI ⚡</button>
+          <div id="brain-explain-res" class="ai-result-box" style="display:none;"></div>
+        </div>
+
+        <!-- Tool 2: Generate Flashcards -->
+        <div class="panel brain-card">
+          <div class="bc-header">
+            <span class="bc-icon">🗂️</span>
+            <h3>Generate Flashcards</h3>
+          </div>
+          <p class="bc-desc">Turn any textbook paragraph or concept into active-recall study flashcards.</p>
+          <textarea id="brain-fc-input" rows="3" placeholder="Paste notes or type a topic..." class="mb-2"></textarea>
+          <button id="brain-fc-btn" class="btn-primary btn-block">Generate Flashcard Deck 🚀</button>
+          <div id="brain-fc-res" class="ai-result-box" style="display:none;"></div>
+        </div>
+
+        <!-- Tool 3: Practice Questions -->
+        <div class="panel brain-card">
+          <div class="bc-header">
+            <span class="bc-icon">📝</span>
+            <h3>Create Practice Questions</h3>
+          </div>
+          <p class="bc-desc">Auto-generate multiple-choice test questions with explanations for revision.</p>
+          <textarea id="brain-quiz-input" rows="3" placeholder="Paste chapter notes or topic..." class="mb-2"></textarea>
+          <button id="brain-quiz-btn" class="btn-primary btn-block">Create Practice Quiz 🎯</button>
+          <div id="brain-quiz-res" class="ai-result-box" style="display:none;"></div>
+        </div>
+
+        <!-- Tool 4: Note Summarizer -->
+        <div class="panel brain-card">
+          <div class="bc-header">
+            <span class="bc-icon">📑</span>
+            <h3>Summarize Study Notes</h3>
+          </div>
+          <p class="bc-desc">Condense lengthy textbook chapters into executive takeaways and bullet points.</p>
+          <textarea id="brain-sum-input" rows="3" placeholder="Paste your raw lecture notes..." class="mb-2"></textarea>
+          <button id="brain-sum-btn" class="btn-primary btn-block">Summarize Notes 📌</button>
+          <div id="brain-sum-res" class="ai-result-box" style="display:none;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- TAB 6: OFFLINE CAMERA & PDF TUTOR          -->
+    <!-- ========================================== -->
+    <div id="tab-tutor" class="tab-pane">
+      <div class="section-heading">
+        <div class="heading-text">
+          <p class="eyebrow">LOCAL OCR & DOCUMENT CONVERTER</p>
+          <h2>Offline Camera & PDF Tutor</h2>
+          <p>Extract text from textbook photos and PDF documents using local tools. Transform them into study materials.</p>
+        </div>
+      </div>
+
+      <div class="tutor-grid">
+        <!-- Input Column: Uploads -->
+        <div class="panel tutor-upload-panel">
+          <div class="tutor-tab-toggles">
+            <button class="filter-pill active" id="tutor-toggle-pdf">📄 PDF Textbook</button>
+            <button class="filter-pill" id="tutor-toggle-cam">📷 Photo / Camera Snap</button>
+          </div>
+
+          <!-- PDF Upload Box -->
+          <div id="tutor-pdf-box" class="tutor-drop-zone">
+            <div class="dz-icon">📚</div>
+            <h4>Upload Textbook or Lecture PDF</h4>
+            <p>Extract chapters page by page completely offline.</p>
+            <input type="file" id="tutor-pdf-file" accept=".pdf" style="display:none;">
+            <button class="btn-secondary" onclick="$('tutor-pdf-file').click()">Select PDF File</button>
+          </div>
+
+          <!-- Camera / Photo Upload Box -->
+          <div id="tutor-cam-box" class="tutor-drop-zone" style="display:none;">
+            <div class="dz-icon">📷</div>
+            <h4>Textbook Photo OCR</h4>
+            <p>Upload a photo of textbook pages or snap from your camera.</p>
+            <input type="file" id="tutor-img-file" accept="image/*" style="display:none;">
+            <div class="cam-upload-actions">
+              <button class="btn-secondary" onclick="$('tutor-img-file').click()">Upload Image</button>
+              <button class="btn-primary" id="tutor-snap-webcam-btn">Capture from Webcam 📸</button>
+            </div>
+          </div>
+
+          <!-- Extracted Text Area -->
+          <div class="extracted-text-container">
+            <div class="etc-header">
+              <span>Extracted Textbook Text</span>
+              <span id="extracted-meta-badge" class="badge-subtle">0 Words</span>
+            </div>
+            <textarea id="tutor-extracted-text" rows="8" placeholder="Extracted textbook content will appear here. You can also paste text directly..."></textarea>
+          </div>
+
+          <!-- Actions to Convert -->
+          <div class="tutor-convert-bar">
+            <span>Convert Extracted Content into:</span>
+            <div class="convert-btn-grid">
+              <button id="tutor-to-fc-btn" class="btn-primary btn-sm">🗂️ Flashcard Deck</button>
+              <button id="tutor-to-quiz-btn" class="btn-secondary btn-sm">📝 Timed Quiz</button>
+              <button id="tutor-to-summary-btn" class="btn-secondary btn-sm">📑 Chapter Summary</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Output Column: Study Aids View -->
+        <div class="panel tutor-results-panel">
+          <div class="panel-header">
+            <h3>Generated Study Materials</h3>
+            <span id="tutor-status-badge" class="badge-subtle">Ready</span>
+          </div>
+
+          <div id="tutor-output-container" class="tutor-output-container">
+            <div class="empty-state-notice">
+              <div class="es-icon">📖</div>
+              <h4>No document converted yet</h4>
+              <p>Upload a PDF textbook page or snapshot a book photo on the left to generate study decks.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- TAB 7: AI CAMERA TUTOR & ENGAGEMENT        -->
+    <!-- ========================================== -->
+    <div id="tab-camera" class="tab-pane">
+      <div class="camera-feature-container">
+        <div class="section-heading">
+          <div class="heading-text">
+            <p class="eyebrow">COMPUTER VISION & STUDY COMPANION</p>
+            <h2>AI Camera Tutor & Proctor</h2>
+            <p>Real-time visual attention tracker, eye engagement analyzer, study posture feedback, and quiz proctoring.</p>
+          </div>
+        </div>
+
+        <div class="camera-grid">
+          <div class="panel camera-feed-panel">
+            <div class="cam-header">
+              <div class="cam-status-indicator">
+                <span class="live-dot" id="cam-live-dot"></span>
+                <span id="cam-status-label">Camera Idle</span>
+              </div>
+              <div class="cam-toggles">
+                <button id="toggle-cam-btn" class="btn-primary btn-sm">Turn Camera On 📹</button>
+                <button id="snapshot-btn" class="btn-secondary btn-sm" disabled>📸 Study Snapshot</button>
+              </div>
+            </div>
+
+            <div class="cam-viewport" id="cam-viewport">
+              <video id="webcam-video" autoplay playsinline muted style="display:none;"></video>
+              <canvas id="vision-canvas" width="640" height="480"></canvas>
+              <div id="cam-idle-overlay" class="cam-idle-overlay">
+                <div class="cam-idle-icon">📷</div>
+                <h3>Camera is turned off</h3>
+                <p>Click "Turn Camera On" to activate live attention tracking, posture monitoring, and AI proctoring.</p>
+              </div>
+              <div id="face-box" class="face-box" style="display:none;">
+                <div class="face-tag" id="face-tag">Face Detected (96%)</div>
+              </div>
+            </div>
+
+            <div class="cam-footer-info">
+              <span>🔒 100% Private & Local: Video frames are analyzed in-browser via Canvas API and never leave your computer.</span>
+            </div>
+          </div>
+
+          <div class="panel camera-telemetry-panel">
+            <h3>Live Engagement Analytics</h3>
+            <div class="telemetry-card">
+              <div class="metric-header">
+                <span>Attention & Focus Level</span>
+                <span class="metric-score" id="metric-attention">88%</span>
+              </div>
+              <div class="meter-bar">
+                <div class="meter-fill" id="attention-fill" style="width: 88%;"></div>
+              </div>
+              <p class="metric-desc" id="attention-status-text">🟢 High Focus: Looking directly at educational material.</p>
+            </div>
+
+            <div class="telemetry-grid">
+              <div class="telem-badge" id="badge-face">
+                <span class="tb-icon">👤</span>
+                <span class="tb-title">Face In Frame</span>
+                <span class="tb-status good" id="status-face-text">Detected</span>
+              </div>
+              <div class="telem-badge" id="badge-gaze">
+                <span class="tb-icon">👁️</span>
+                <span class="tb-title">Screen Gaze</span>
+                <span class="tb-status good" id="status-gaze-text">Centered</span>
+              </div>
+              <div class="telem-badge" id="badge-posture">
+                <span class="tb-icon">🪑</span>
+                <span class="tb-title">Study Posture</span>
+                <span class="tb-status good" id="status-posture-text">Upright</span>
+              </div>
+              <div class="telem-badge" id="badge-lighting">
+                <span class="tb-icon">💡</span>
+                <span class="tb-title">Lighting Quality</span>
+                <span class="tb-status good" id="status-lighting-text">Optimal</span>
+              </div>
+            </div>
+
+            <div class="proctoring-toggle-card">
+              <div class="toggle-text">
+                <strong>Sync with Quizzes</strong>
+                <p>Automatically enforce camera presence and focus alerts when taking quizzes.</p>
+              </div>
+              <label class="switch">
+                <input type="checkbox" id="proctor-sync-toggle" checked>
+                <span class="slider round"></span>
+              </label>
+            </div>
+
+            <div class="cam-alerts-box">
+              <h4>Real-time Activity Log</h4>
+              <ul class="activity-log" id="camera-log">
+                <li><span class="log-time">00:00</span> Vision engine initialized.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- TAB 8: OFFLINE CONTROL CENTER              -->
+    <!-- ========================================== -->
+    <div id="tab-control" class="tab-pane">
+      <div class="section-heading">
+        <div class="heading-text">
+          <p class="eyebrow">SYSTEM HEALTH & ARCHITECTURE</p>
+          <h2>Offline Control Center</h2>
+          <p>Independently monitor Local AI, Database, Audio, and Internet. Manage disk storage and force 100% offline mode.</p>
+        </div>
+        <button id="refresh-control-btn" class="btn-secondary btn-sm">🔄 Refresh Status</button>
+      </div>
+
+      <!-- One-Click Strict Offline Mode Bar -->
+      <div class="panel offline-mode-hero-panel">
+        <div class="omh-left">
+          <div class="omh-icon">🛡️</div>
+          <div class="omh-text">
+            <h3>One-Click Strict Offline Mode</h3>
+            <p>Enforce strict local-only execution: blocks all external network calls, uses local Ollama and local disk cache.</p>
+          </div>
+        </div>
+        <div class="omh-right">
+          <label class="switch switch-large">
+            <input type="checkbox" id="strict-offline-toggle">
+            <span class="slider round"></span>
+          </label>
+        </div>
+      </div>
+
+      <!-- 4 Independent Status Cards -->
+      <div class="status-quad-grid">
+        <!-- Card 1: Local AI -->
+        <div class="panel status-card" id="sc-local-ai">
+          <div class="sc-header">
+            <div class="sc-title-group">
+              <span class="sc-icon">🧠</span>
+              <h4>Local AI (Ollama)</h4>
+            </div>
+            <span class="status-badge" id="sc-ai-badge">Checking...</span>
+          </div>
+          <p class="sc-desc" id="sc-ai-desc">Pinging local Ollama endpoint (port 11434)...</p>
+          <div class="sc-footer">
+            <span class="sc-meta-label">Models Available:</span>
+            <span class="sc-meta-val" id="sc-ai-models">0 Models</span>
+          </div>
+        </div>
+
+        <!-- Card 2: Database -->
+        <div class="panel status-card" id="sc-database">
+          <div class="sc-header">
+            <div class="sc-title-group">
+              <span class="sc-icon">🗄️</span>
+              <h4>Database Engine</h4>
+            </div>
+            <span class="status-badge healthy" id="sc-db-badge">Healthy</span>
+          </div>
+          <p class="sc-desc" id="sc-db-desc">Local JSON Store (Users, Courses, AI Cache)</p>
+          <div class="sc-footer">
+            <span class="sc-meta-label">Total Records:</span>
+            <span class="sc-meta-val" id="sc-db-records">Loading...</span>
+          </div>
+        </div>
+
+        <!-- Card 3: Audio Engine -->
+        <div class="panel status-card" id="sc-audio">
+          <div class="sc-header">
+            <div class="sc-title-group">
+              <span class="sc-icon">🎙️</span>
+              <h4>Audio Engine</h4>
+            </div>
+            <span class="status-badge healthy" id="sc-audio-badge">Ready</span>
+          </div>
+          <p class="sc-desc" id="sc-audio-desc">Neural AI Synthesizer + Local pyttsx3 fallback</p>
+          <div class="sc-footer">
+            <span class="sc-meta-label">Supported Languages:</span>
+            <span class="sc-meta-val">13 Languages</span>
+          </div>
+        </div>
+
+        <!-- Card 4: Internet -->
+        <div class="panel status-card" id="sc-internet">
+          <div class="sc-header">
+            <div class="sc-title-group">
+              <span class="sc-icon">🌐</span>
+              <h4>Internet Connectivity</h4>
+            </div>
+            <span class="status-badge" id="sc-net-badge">Checking...</span>
+          </div>
+          <p class="sc-desc" id="sc-net-desc">Checking independent connection status...</p>
+          <div class="sc-footer">
+            <span class="sc-meta-label">Execution Mode:</span>
+            <span class="sc-meta-val" id="sc-net-mode">Hybrid / Local-First</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Storage-Usage Indicator Panel -->
+      <div class="panel storage-panel">
+        <div class="storage-panel-header">
+          <div>
+            <h3>Storage-Usage Indicator</h3>
+            <p>Allocated disk space for cached models, generated MP4 lessons, audio files, and user data.</p>
+          </div>
+          <button id="clear-cache-btn" class="btn-secondary btn-sm">🧹 Clear Audio & Temp Cache</button>
+        </div>
+
+        <div class="storage-bar-container">
+          <div class="storage-bar-labels">
+            <span id="storage-used-label"><strong>4.2 MB</strong> used</span>
+            <span id="storage-quota-label">500 MB Allocation Quota</span>
+          </div>
+          <div class="progress progress-large">
+            <div id="storage-progress-fill" style="width: 2%;"></div>
+          </div>
+        </div>
+
+        <div class="storage-breakdown-row">
+          <div class="sb-item">
+            <span class="sb-dot video"></span>
+            <span class="sb-title">MP4 Videos:</span>
+            <span class="sb-val" id="sb-val-video">0.0 MB</span>
+          </div>
+          <div class="sb-item">
+            <span class="sb-dot audio"></span>
+            <span class="sb-title">AI Voice Audio:</span>
+            <span class="sb-val" id="sb-val-audio">0.0 MB</span>
+          </div>
+          <div class="sb-item">
+            <span class="sb-dot uploads"></span>
+            <span class="sb-title">Uploaded Media:</span>
+            <span class="sb-val" id="sb-val-uploads">0.0 MB</span>
+          </div>
+          <div class="sb-item">
+            <span class="sb-dot data"></span>
+            <span class="sb-title">Curriculum & Cache:</span>
+            <span class="sb-val" id="sb-val-data">0.0 MB</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- TAB 9: PROGRESS & ACHIEVEMENTS             -->
+    <!-- ========================================== -->
+    <div id="tab-progress" class="tab-pane">
+      <div class="progress-dashboard">
+        <div class="section-heading">
+          <div class="heading-text">
+            <p class="eyebrow">YOUR LEARNING JOURNEY</p>
+            <h2>Progress & Achievements</h2>
+            <p>Track your visual study streak, total XP points, quiz history, and unlocked badges.</p>
+          </div>
+        </div>
+
+        <div class="metric-cards-row">
+          <div class="metric-big-card panel">
+            <div class="mb-icon">⚡</div>
+            <div class="mb-data">
+              <span class="mb-number" id="dash-xp">120</span>
+              <span class="mb-label">Total XP Earned</span>
+            </div>
+          </div>
+          <div class="metric-big-card panel">
+            <div class="mb-icon">🔥</div>
+            <div class="mb-data">
+              <span class="mb-number" id="dash-streak">3 Days</span>
+              <span class="mb-label">Daily Study Streak</span>
+            </div>
+          </div>
+          <div class="metric-big-card panel">
+            <div class="mb-icon">🎓</div>
+            <div class="mb-data">
+              <span class="mb-number" id="dash-level">Level 1</span>
+              <span class="mb-label">Visual Scholar</span>
+            </div>
+          </div>
+          <div class="metric-big-card panel">
+            <div class="mb-icon">📝</div>
+            <div class="mb-data">
+              <span class="mb-number" id="dash-quizzes">1</span>
+              <span class="mb-label">Quizzes Completed</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel level-progress-panel">
+          <div class="level-bar-header">
+            <span>Next Rank: <strong>Level 2 Visual Pioneer</strong></span>
+            <span id="level-xp-text">120 / 200 XP</span>
+          </div>
+          <div class="progress progress-large">
+            <div id="level-progress-fill" style="width: 60%;"></div>
+          </div>
+        </div>
+
+        <div class="panel badges-panel">
+          <h3>Unlocked Achievement Badges</h3>
+          <div class="badges-grid" id="badges-grid">
+            <div class="badge-item unlocked">
+              <div class="badge-icon">🚀</div>
+              <span class="badge-name">First Lesson</span>
+              <span class="badge-desc">Completed your first visual lesson</span>
+            </div>
+            <div class="badge-item unlocked">
+              <div class="badge-icon">🛡️</div>
+              <span class="badge-name">Honest Scholar</span>
+              <span class="badge-desc">Finished a quiz with 0 tab switches</span>
+            </div>
+            <div class="badge-item unlocked">
+              <div class="badge-icon">🌐</div>
+              <span class="badge-name">Polyglot Explorer</span>
+              <span class="badge-desc">Studied content in multiple languages</span>
+            </div>
+            <div class="badge-item locked">
+              <div class="badge-icon">👁️</div>
+              <span class="badge-name">Laser Focus</span>
+              <span class="badge-desc">Maintained 90%+ attention for 3 mins</span>
+            </div>
+            <div class="badge-item locked">
+              <div class="badge-icon">🗂️</div>
+              <span class="badge-name">Flashcard Master</span>
+              <span class="badge-desc">Mastered 10 flashcards</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel history-panel">
+          <h3>Assessment & Proctoring History</h3>
+          <div class="table-responsive">
+            <table class="history-table">
+              <thead>
+                <tr>
+                  <th>Topic</th>
+                  <th>Score</th>
+                  <th>Tab Switches</th>
+                  <th>Proctor Status</th>
+                  <th>XP</th>
+                </tr>
+              </thead>
+              <tbody id="history-table-body">
+                <tr>
+                  <td>Python Loops & Iteration</td>
+                  <td><span class="score-pill good">100%</span></td>
+                  <td>0 Strikes</td>
+                  <td><span class="status-clean">🛡️ Verified Clean</span></td>
+                  <td>+180 XP</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- TAB 10: LOGIN & REGISTER (USER ACCOUNT)    -->
+    <!-- ========================================== -->
+    <div id="tab-auth" class="tab-pane">
+      <div class="auth-container">
+        <div id="auth-logged-out" class="panel auth-card">
+          <div class="auth-header">
+            <div class="auth-brand-icon">🎓</div>
+            <h2>Join Blu Visual Teacher</h2>
+            <p>Save your progress, unlock achievements, and study with custom Neural AI audio.</p>
+          </div>
+
+          <div class="auth-nav-pills">
+            <button class="auth-nav-pill active" id="auth-switch-login">Sign In</button>
+            <button class="auth-nav-pill" id="auth-switch-register">Create Account</button>
+          </div>
+
+          <div id="auth-alert" class="auth-alert" style="display:none;"></div>
+
+          <div class="demo-login-box">
+            <span>⚡ Instant Demo Access:</span>
+            <button id="quick-demo-login-btn" class="btn-secondary btn-sm">One-Click Login as Alex (Demo)</button>
+          </div>
+
+          <form id="login-form" class="auth-form">
+            <label for="login-ident">Username or Email</label>
+            <input id="login-ident" required placeholder="demo_learner or demo@blu.ai">
+
+            <label for="login-pw">Password</label>
+            <input id="login-pw" type="password" required placeholder="Enter password (e.g. password123)">
+
+            <button type="submit" class="btn-primary btn-large btn-block" id="login-submit-btn">
+              <span>Sign In to Your Account</span>
+              <span class="btn-icon">→</span>
+            </button>
+          </form>
+
+          <form id="register-form" class="auth-form" style="display:none;">
+            <label for="reg-name">Full Name</label>
+            <input id="reg-name" required placeholder="e.g. Priya Sharma">
+
+            <label for="reg-username">Username</label>
+            <input id="reg-username" required minlength="3" placeholder="e.g. priya_learns">
+
+            <label for="reg-email">Email Address</label>
+            <input id="reg-email" type="email" required placeholder="e.g. priya@example.com">
+
+            <label for="reg-pw">Password</label>
+            <input id="reg-pw" type="password" required minlength="6" placeholder="At least 6 characters">
+
+            <div class="form-row two">
+              <div>
+                <label for="reg-language">Preferred Language</label>
+                <select id="reg-language">
+                  <option value="en">English</option>
+                  <option value="hi">Hindi (हिन्दी)</option>
+                  <option value="ta">Tamil (தமிழ்)</option>
+                  <option value="te">Telugu (తెలుగు)</option>
+                  <option value="kn">Kannada (ಕನ್ನಡ)</option>
+                  <option value="ml">Malayalam (മലയാളം)</option>
+                  <option value="bn">Bengali (বাংলা)</option>
+                  <option value="mr">Marathi (मराठी)</option>
+                  <option value="gu">Gujarati (ગુજરાતી)</option>
+                  <option value="es">Spanish (Español)</option>
+                  <option value="fr">French (Français)</option>
+                  <option value="de">German (Deutsch)</option>
+                  <option value="ja">Japanese (日本語)</option>
+                </select>
+              </div>
+              <div>
+                <label for="reg-level">Learning Level</label>
+                <select id="reg-level">
+                  <option value="beginner">Beginner</option>
+                  <option value="intermediate">Intermediate</option>
+                </select>
+              </div>
+            </div>
+
+            <button type="submit" class="btn-primary btn-large btn-block" id="register-submit-btn">
+              <span>Create My Account</span>
+              <span class="btn-icon">✓</span>
+            </button>
+          </form>
+        </div>
+
+        <div id="auth-logged-in" class="panel profile-card" style="display:none;">
+          <div class="profile-hero">
+            <div class="profile-avatar-big" id="prof-avatar">👤</div>
+            <div class="profile-meta">
+              <h2 id="prof-name">Alex Learner</h2>
+              <span class="profile-user-handle" id="prof-username">@demo_learner</span>
+              <span class="profile-level-badge" id="prof-level-badge">Level 3 Visual Pioneer</span>
+            </div>
+            <button id="logout-btn" class="btn-secondary btn-sm logout-btn">Log Out ⎋</button>
+          </div>
+
+          <div class="profile-stats-grid">
+            <div class="prof-stat">
+              <span class="ps-label">Total Experience</span>
+              <span class="ps-val" id="prof-xp">350 XP</span>
+            </div>
+            <div class="prof-stat">
+              <span class="ps-label">Learning Streak</span>
+              <span class="ps-val" id="prof-streak">🔥 4 Days</span>
+            </div>
+            <div class="prof-stat">
+              <span class="ps-label">Preferred Language</span>
+              <span class="ps-val" id="prof-lang">English (Neural)</span>
+            </div>
+            <div class="prof-stat">
+              <span class="ps-label">Quizzes Taken</span>
+              <span class="ps-val" id="prof-quizzes">3</span>
+            </div>
+          </div>
+
+          <div class="profile-actions">
+            <button id="prof-go-studio" class="btn-primary">Return to Studio 🎬</button>
+            <button id="prof-go-progress" class="btn-secondary">View Achievements & Badges 🏆</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ========================================== -->
+  <!-- TAB SWITCH ANTI-CHEAT WARNING MODAL        -->
+  <!-- ========================================== -->
+  <div id="anti-cheat-modal" class="modal-overlay" style="display:none;">
+    <div class="modal-card alert-modal">
+      <div class="alert-pulse-icon">⚠️</div>
+      <h2>TAB SWITCH DETECTED!</h2>
+      <p class="alert-lead">You left the quiz window. Navigating away or opening other tabs during a timed assessment is strictly monitored.</p>
+      
+      <div class="strike-warning-box">
+        <span class="warning-title" id="modal-strike-title">WARNING STRIKE 1 OF 3</span>
+        <p id="modal-penalty-text">A penalty of 15 seconds has been deducted from your remaining time.</p>
+      </div>
+
+      <p class="alert-final-note">If you reach 3 strikes, your quiz will automatically terminate with a failing grade.</p>
+
+      <button id="dismiss-cheat-warning-btn" class="btn-primary btn-large">Return to Quiz Now 🛡️</button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="app-footer">
+    <div class="footer-left">
+      <span>BUILT FOR THE BLU VISUAL TEACHER HACKATHON</span>
+      <span class="dot-sep">·</span>
+      <span>OFFLINE CONTROL CENTER · LOCAL AI BRAIN</span>
+    </div>
+    <div class="footer-right">
+      <span>Neural AI Audio in 13 Languages</span>
+      <span class="dot-sep">·</span>
+      <span>OCR & Bilingual Kannada Tutor</span>
+    </div>
+  </footer>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

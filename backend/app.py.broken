@@ -1,0 +1,103 @@
+            audio_target = None
+
+    mp4_target = OUT / f"{lesson_id}.mp4"
+    try:
+        mp4 = make_mp4(lesson, str(mp4_target), str(audio_target) if audio_target and audio_target.exists() else None)
+    except Exception as exc:
+        raise HTTPException(500, str(exc))
+    
+    return {
+        "download_url": f"/api/download/{lesson_id}",
+        "video_url": f"/media/{lesson_id}.mp4",
+        "audio": f"Neural AI voice ({lesson.get('language', 'en')})"
+    }
+
+@app.get("/api/download/{lesson_id}")
+def download_lesson_mp4(lesson_id: str):
+    path = OUT / f"{lesson_id}.mp4"
+    if not path.exists():
+        raise HTTPException(404, "MP4 video not found. Please export it first.")
+    return FileResponse(path, media_type="video/mp4", filename=f"blu-lesson-{lesson_id}.mp4")
+
+@app.get("/api/progress")
+def get_user_progress_route(authorization: str | None = Header(None)):
+    token = None
+    if authorization and authorization.startswith("Bearer "):
+        token = authorization.split("Bearer ", 1)[1].strip()
+    user = get_current_user(token)
+    if user:
+        return user
+    
+    prog_file = OUT / "guest_progress.json"
+    if not prog_file.exists():
+        return {"xp": 120, "level": 1, "streak_days": 3, "quizzes_taken": 1, "badges": ["Guest Explorer"], "history": []}
+    return json.loads(prog_file.read_text(encoding="utf-8"))
+
+@app.post("/api/quiz/submit")
+def submit_quiz_result(payload: dict, authorization: str | None = Header(None)):
+    lesson_id = payload.get("lesson_id", "unknown")
+    lesson_title = payload.get("lesson_title", "General Quiz")
+    score = payload.get("score", 0)
+    total = payload.get("total", 1)
+    strikes = payload.get("strikes", 0)
+    time_taken = payload.get("time_taken", 0)
+    
+    earned_xp = score * 50
+    if strikes == 0 and score > 0:
+        earned_xp += 30
+    elif strikes >= 3:
+        earned_xp = max(0, earned_xp - 40)
+        
+    record = {
+        "timestamp": int(time.time()),
+        "lesson_id": lesson_id,
+        "lesson_title": lesson_title,
+        "score": score,
+        "total": total,
+        "percent": round((score / max(1, total)) * 100),
+        "strikes": strikes,
+        "time_taken_sec": time_taken,
+        "earned_xp": earned_xp,
+        "integrity_status": "Clean (Zero Tab Switches)" if strikes == 0 else f"{strikes} Tab Switch Strikes Recorded"
+    }
+
+    token = None
+    if authorization and authorization.startswith("Bearer "):
+        token = authorization.split("Bearer ", 1)[1].strip()
+
+    if token:
+        updated = update_user_progress(token, {
+            "xp": earned_xp,
+            "history": [record],
+            "quizzes_taken": 1
+        })
+        return {
+            "status": "success",
+            "record": record,
+            "earned_xp": earned_xp,
+            "total_xp": updated.get("xp"),
+            "level": updated.get("level_num", 1),
+            "badges": updated.get("badges", [])
+        }
+
+    prog_file = OUT / "guest_progress.json"
+    curr = {"xp": 120, "level": 1, "streak_days": 3, "quizzes_taken": 1, "badges": ["First Lesson"], "history": []}
+    if prog_file.exists():
+        try:
+            curr = json.loads(prog_file.read_text(encoding="utf-8"))
+        except Exception:
+            pass
+    curr["xp"] = curr.get("xp", 120) + earned_xp
+    curr["level"] = max(1, curr["xp"] // 100 + 1)
+    curr["quizzes_taken"] = curr.get("quizzes_taken", 0) + 1
+    curr["history"] = (curr.get("history", []) + [record])[-30:]
+    prog_file.write_text(json.dumps(curr, indent=2, ensure_ascii=False), encoding="utf-8")
+
+    return {
+        "status": "success",
+        "record": record,
+        "earned_xp": earned_xp,
+        "total_xp": curr["xp"],
+        "level": curr["level"],
+        "badges": curr["badges"]
+    }

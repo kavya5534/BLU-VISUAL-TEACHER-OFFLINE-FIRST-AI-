@@ -1,0 +1,330 @@
+[
+  {
+    "id": "course-python-loops",
+    "title": "How a Python Loop Works",
+    "category": "Programming",
+    "level": "beginner",
+    "language": "en",
+    "duration": "45 sec",
+    "summary": "Master loops, ranges, and iteration in Python through clear visual code execution.",
+    "tags": ["Python", "Loops", "Basics"],
+    "scenes": [
+      {
+        "type": "title_card",
+        "heading": "A Loop Repeats Work",
+        "narration": "A loop repeats an instruction for each item in a sequence, eliminating tedious repetitive code."
+      },
+      {
+        "type": "code_walkthrough",
+        "heading": "Trace the Python Code",
+        "code": "for i in range(3):\n    print(f\"Processing item: {i}\")",
+        "highlight_lines": [1],
+        "narration": "The range function produces three consecutive values: zero, one, and two. The loop body executes once for each value."
+      },
+      {
+        "type": "diagram",
+        "heading": "Visualizing Iterations",
+        "items": ["i = 0 (Start)", "i = 1 (Next)", "i = 2 (Final)", "Done! (Exit)"],
+        "narration": "During each pass, variable i updates to the next sequence number until all items are processed."
+      }
+    ],
+    "quizzes": [
+      {
+        "id": 1,
+        "question": "What is the final value printed by for i in range(3)?",
+        "options": ["3", "2", "1", "0"],
+        "answer": 1,
+        "explanation": "range(3) produces 0, 1, and 2, so the final iteration prints 2."
+      },
+      {
+        "id": 2,
+        "question": "What is each pass through a loop called?",
+        "options": ["Recursion", "Compilation", "Iteration", "Inheritance"],
+        "answer": 2,
+        "explanation": "A single cycle or execution of the loop body is called an iteration."
+      }
+    ],
+    "flashcards": [
+      {
+        "front": "Iteration",
+        "back": "One single pass of executing a loop's block of instructions.",
+        "tip": "Think of one lap around a track."
+      },
+      {
+        "front": "range(n)",
+        "back": "Generates integer sequence from 0 up to n - 1.",
+        "tip": "Upper bound is excluded."
+      }
+    ]
+  },
+  {
+    "id": "course-neural-networks",
+    "title": "How Neural Networks Learn",
+    "category": "AI & Machine Learning",
+    "level": "beginner",
+    "language": "en",
+    "duration": "60 sec",
+    "summary": "Understand weights, forward propagation, and backpropagation in modern AI models.",
+    "tags": ["AI", "Neural Networks", "Deep Learning"],
+    "scenes": [
+      {
+        "type": "title_card",
+        "heading": "Neurons and Connections",
+        "narration": "Artificial neural networks are inspired by biological brains, made of connected layers of mathematical neurons."
+      },
+      {
+        "type": "diagram",
+        "heading": "Information Flow (Forward Pass)",
+        "items": ["Inputs (Pixels)", "Hidden Layers (Weights)", "Activation (ReLU)", "Prediction Output"],
+        "narration": "Raw inputs pass forward through layers where weights and activation functions transform them into predictions."
+      },
+      {
+        "type": "code_walkthrough",
+        "heading": "Loss and Weight Updates",
+        "code": "error = loss(prediction, actual)\nweights = weights - learning_rate * gradient",
+        "highlight_lines": [2],
+        "narration": "When the prediction makes an error, gradients flow backwards to nudge weights in the direction of lower error."
+      }
+    ],
+    "quizzes": [
+      {
+        "id": 1,
+        "question": "What algorithm calculates the error gradients to update weights?",
+        "options": ["Binary Search", "Backpropagation", "Quicksort", "Dijkstra"],
+        "answer": 1,
+        "explanation": "Backpropagation uses the chain rule of calculus to compute gradient of loss with respect to each weight."
+      },
+      {
+        "id": 2,
+        "question": "What does the learning rate control?",
+        "options": ["CPU clock speed", "Step size taken when updating model weights", "Number of training images", "Screen resolution"],
+        "answer": 1,
+        "explanation": "The learning rate scales how large of a step the optimizer takes in the gradient direction."
+      }
+    ],
+    "flashcards": [
+      {
+        "front": "Forward Propagation",
+        "back": "Passing input data through the network layers to calculate an output prediction.",
+        "tip": "Input -> Output"
+      },
+      {
+        "front": "Loss Function",
+        "back": "A mathematical formula that measures the difference between model output and ground truth.",
+        "tip": "How wrong was the guess?"
+      }
+    ]
+  },
+  {
+    "id": "course-how-dns-works",
+    "title": "How the Internet & DNS Works",
+    "category": "Networking",
+    "level": "beginner",
+    "language": "en",
+    "duration": "45 sec",
+    "summary": "From URL typing to IP resolution: learn how domain names turn into server connections.",
+    "tags": ["DNS", "Web", "Networking"],
+    "scenes": [
+      {
+        "type": "title_card",
+        "heading": "The Phonebook of the Web",
+        "narration": "Computers find each other using IP addresses like 142.250.190.46, but humans prefer easy names like google.com."
+      },
+      {
+        "type": "diagram",
+        "heading": "DNS Resolution Chain",
+        "items": ["Browser Request", "Recursive Resolver", "Root Server", "TLD Server (.com)", "Authoritative Server"],
+        "narration": "Your request asks DNS servers hierarchically until the authoritative server returns the exact destination IP address."
+      },
+      {
+        "type": "code_walkthrough",
+        "heading": "Making the TCP/TLS Connection",
+        "code": "GET / HTTP/2\nHost: example.com\nUser-Agent: Mozilla/5.0",
+        "highlight_lines": [1],
+        "narration": "Once the IP address is known, your browser opens an encrypted TLS connection and requests the web page."
+      }
+    ],
+    "quizzes": [
+      {
+        "id": 1,
+        "question": "What is the primary role of DNS?",
+        "options": ["To encrypt your hard drive", "To translate domain names into IP addresses", "To design website layouts", "To store cookies"],
+        "answer": 1,
+        "explanation": "DNS (Domain Name System) translates human-readable domain names into numerical IP addresses."
+      }
+    ],
+    "flashcards": [
+      {
+        "front": "DNS Resolver",
+        "back": "The server responsible for tracking down the IP address on behalf of your computer.",
+        "tip": "The detective finding the address."
+      },
+      {
+        "front": "TLD (Top-Level Domain)",
+        "back": "The last segment of a domain name, such as .com, .org, or .edu.",
+        "tip": "Ending suffix."
+      }
+    ]
+  },
+  {
+    "id": "course-photosynthesis",
+    "title": "Photosynthesis: Solar Power of Plants",
+    "category": "Science & Biology",
+    "level": "beginner",
+    "language": "en",
+    "duration": "50 sec",
+    "summary": "Discover how plants turn sunlight, water, and carbon dioxide into glucose and clean oxygen.",
+    "tags": ["Biology", "Plants", "Solar Energy"],
+    "scenes": [
+      {
+        "type": "title_card",
+        "heading": "Nature's Solar Engine",
+        "narration": "Photosynthesis converts solar energy into chemical energy stored in glucose, sustaining life on Earth."
+      },
+      {
+        "type": "diagram",
+        "heading": "Input and Output Transformation",
+        "items": ["Light Energy", "6 CO2 (Carbon Dioxide)", "6 H2O (Water)", "Chloroplasts", "C6H12O6 (Glucose)", "6 O2 (Oxygen)"],
+        "narration": "Inside plant chloroplasts, green chlorophyll pigments capture photons to break water and fix carbon dioxide."
+      },
+      {
+        "type": "title_card",
+        "heading": "The Light & Dark Reactions",
+        "narration": "Light reactions produce ATP energy carriers; the Calvin cycle uses that energy to build sugars day and night."
+      }
+    ],
+    "quizzes": [
+      {
+        "id": 1,
+        "question": "What green pigment absorbs sunlight inside plant chloroplasts?",
+        "options": ["Hemoglobin", "Chlorophyll", "Melanin", "Keratin"],
+        "answer": 1,
+        "explanation": "Chlorophyll is the pigment that absorbs blue and red wavelengths while reflecting green light."
+      },
+      {
+        "id": 2,
+        "question": "What crucial gas is released into the atmosphere as a byproduct?",
+        "options": ["Nitrogen", "Methane", "Oxygen", "Helium"],
+        "answer": 2,
+        "explanation": "Plants split water molecules during light reactions, releasing oxygen gas into our atmosphere."
+      }
+    ],
+    "flashcards": [
+      {
+        "front": "Chloroplast",
+        "back": "The cellular organelle where photosynthesis takes place.",
+        "tip": "The plant cell's solar factory."
+      },
+      {
+        "front": "Calvin Cycle",
+        "back": "The light-independent stage that fixes atmospheric carbon dioxide into glucose.",
+        "tip": "The sugar-building machine."
+      }
+    ]
+  },
+  {
+    "id": "course-git-fundamentals",
+    "title": "Git & Version Control in 3 Minutes",
+    "category": "Software Engineering",
+    "level": "beginner",
+    "language": "en",
+    "duration": "45 sec",
+    "summary": "Working tree, staging area, commits, and branches explained with crystal visual diagrams.",
+    "tags": ["Git", "GitHub", "DevOps"],
+    "scenes": [
+      {
+        "type": "title_card",
+        "heading": "A Time Machine for Code",
+        "narration": "Git tracks historical snapshots of your project, allowing you to branch, collaborate, and safely roll back."
+      },
+      {
+        "type": "diagram",
+        "heading": "The Three Git States",
+        "items": ["Working Directory", "git add", "Staging Area (Index)", "git commit", "Local Repository (HEAD)", "git push", "Remote (GitHub)"],
+        "narration": "You edit files, stage desired changes with git add, commit them as permanent milestones, and push to share."
+      },
+      {
+        "type": "code_walkthrough",
+        "heading": "Everyday Commands",
+        "code": "git status\ngit add .\ngit commit -m \"Add interactive quiz feature\"\ngit push origin main",
+        "highlight_lines": [2, 3],
+        "narration": "These four commands represent 90% of daily version control workflow."
+      }
+    ],
+    "quizzes": [
+      {
+        "id": 1,
+        "question": "Which command stages modified files for the next commit?",
+        "options": ["git stage", "git add", "git save", "git upload"],
+        "answer": 1,
+        "explanation": "git add moves changed files from the working tree to the staging index."
+      }
+    ],
+    "flashcards": [
+      {
+        "front": "Commit",
+        "back": "A permanent cryptographic snapshot of the repository at a specific point in time.",
+        "tip": "A saved checkpoint."
+      },
+      {
+        "front": "Branch",
+        "back": "A lightweight movable pointer to a line of development.",
+        "tip": "Parallel timeline."
+      }
+    ]
+  },
+  {
+    "id": "course-binary-search",
+    "title": "Binary Search: Divide & Conquer",
+    "category": "Algorithms",
+    "level": "intermediate",
+    "language": "en",
+    "duration": "50 sec",
+    "summary": "Why O(log n) searches 1 billion items in just 30 steps.",
+    "tags": ["Algorithms", "Data Structures", "Big-O"],
+    "scenes": [
+      {
+        "type": "title_card",
+        "heading": "Cutting the Search in Half",
+        "narration": "When a list is sorted, you never need to check items one by one. Check the middle and discard half every time!"
+      },
+      {
+        "type": "diagram",
+        "heading": "Halving the Search Space",
+        "items": ["1,000,000 items", "500,000", "250,000", "125,000", "…", "Target Found in 20 steps!"],
+        "narration": "Each step cuts remaining candidates in half. Even for 4 billion elements, binary search finds the item in 32 comparisons."
+      },
+      {
+        "type": "code_walkthrough",
+        "heading": "The Algorithm",
+        "code": "while low <= high:\n    mid = (low + high) // 2\n    if arr[mid] == target: return mid\n    elif arr[mid] < target: low = mid + 1\n    else: high = mid - 1",
+        "highlight_lines": [2, 4],
+        "narration": "Recalculate mid and adjust boundary pointers low or high."
+      }
+    ],
+    "quizzes": [
+      {
+        "id": 1,
+        "question": "What prerequisite MUST be true before running binary search?",
+        "options": ["The list must be sorted", "The list must contain only even numbers", "The list must be stored in the cloud", "The list length must be odd"],
+        "answer": 0,
+        "explanation": "Binary search requires the data to be in sorted order to determine which half to discard."
+      },
+      {
+        "id": 2,
+        "question": "What is the time complexity of binary search?",
+        "options": ["O(n)", "O(n^2)", "O(log n)", "O(1)"],
+        "answer": 2,
+        "explanation": "Because the space is halved at each step, time complexity is logarithmic: O(log n)."
+      }
+    ],
+    "flashcards": [
+      {
+        "front": "O(log n)",
+        "back": "Logarithmic time complexity; doubles of input size only add a single constant operation step.",
+        "tip": "Exponentially fast."
+      }
+    ]
+  }
+]
+
